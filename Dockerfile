@@ -8,4 +8,4 @@ RUN apt update && apt install -y \
 
 EXPOSE 10000
 
-CMD ["ttyd","-W","-p","10000","bash"]
+CMD ["ttyd","-W","-p","10000","tmux","new","-A","-s","main"]
