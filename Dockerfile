@@ -1,6 +1,11 @@
-FROM python:3.11-slim
-WORKDIR /app
-COPY . /app
-RUN pip install --no-cache-dir -r requirements.txt
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt update && apt install -y \
+    ttyd tmux python3 python3-pip \
+    git wget curl ffmpeg aria2 unzip nano
+
 EXPOSE 10000
-CMD ["python", "bot.py"]
+
+CMD ["ttyd","-W","-p","10000","bash"]
